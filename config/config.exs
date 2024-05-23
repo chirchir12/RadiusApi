@@ -11,6 +11,16 @@ config :radiusApi,
   ecto_repos: [RadiusApi.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+# database default configuration
+# Configure your database
+config :radiusApi, RadiusApi.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "radiusapi_dev",
+  stacktrace: true,
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 # Configures the endpoint
 config :radiusApi, RadiusApiWeb.Endpoint,
   url: [host: "localhost"],
