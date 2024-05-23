@@ -7,6 +7,7 @@ defmodule RadiusApiWeb.Router do
 
   scope "/api", RadiusApiWeb do
     pipe_through :api
+    resources "/nas", NasController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

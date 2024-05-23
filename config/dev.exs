@@ -23,7 +23,7 @@ config :radiusApi, RadiusApiWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4000],
   check_origin: false,
   code_reloader: true,
-  debug_errors: true,
+  debug_errors: false,
   secret_key_base: "hib5A0TVUMTPbq5ML0lWESa5isI2JrOevfuxg5KC3aYjc9WCA53Vbt1X4YyHCUiU",
   watchers: []
 
