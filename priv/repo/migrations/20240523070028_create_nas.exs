@@ -15,6 +15,6 @@ defmodule RadiusApi.Repo.Migrations.CreateNas do
       timestamps(type: :utc_datetime)
     end
 
-    create index(:nas, [:nasname], name: :nas_nasname)
+    create unique_index(:nas, [:nasname], name: :nas_nasname)
   end
 end

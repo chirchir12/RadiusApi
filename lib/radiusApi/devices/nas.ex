@@ -9,7 +9,8 @@ defmodule RadiusApi.Devices.Nas do
     :secret,
     :server,
     :community,
-    :description
+    :description,
+    :shortname
   ]
 
   @required [
@@ -17,7 +18,8 @@ defmodule RadiusApi.Devices.Nas do
     :type,
     :ports,
     :secret,
-    :server
+    :server,
+    :shortname
   ]
 
   schema "nas" do
@@ -38,5 +40,6 @@ defmodule RadiusApi.Devices.Nas do
     nas
     |> cast(attrs, @permitted)
     |> validate_required(@required)
+    |> unique_constraint(:nasname, message: "nasname is already configured")
   end
 end
