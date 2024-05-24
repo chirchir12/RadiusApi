@@ -28,7 +28,6 @@ defmodule RadiusApi.Policies.Radcheck do
     t
     |> cast(attr, @permitted)
     |> validate_required(@required)
-
   end
 
 
