@@ -7,6 +7,7 @@ defmodule RadiusApi.Devices do
   alias RadiusApi.Repo
 
   alias RadiusApi.Devices.Nas
+  alias RadiusApi.Devices.NasReload
 
   @doc """
   Returns the list of nas.
@@ -99,5 +100,12 @@ defmodule RadiusApi.Devices do
   """
   def change_nas(%Nas{} = nas, attrs \\ %{}) do
     Nas.changeset(nas, attrs)
+  end
+
+  def reload_nas(attr \\ %{}) do
+    date = DateTime.utc_now()
+    attr = Map.put(attr, "reload_time", date)
+    changeset = NasReload.changeset(%NasReload{}, attr)
+    Repo.insert(changeset)
   end
 end

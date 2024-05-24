@@ -39,4 +39,10 @@ defmodule RadiusApiWeb.NasController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def nas_reload(conn, %{"reload" => nas_reload_params}) do
+    with {:ok, reloaded_nas} <- Devices.reload_nas(nas_reload_params) do
+      render(conn, :reload, reload: reloaded_nas)
+    end
+  end
 end

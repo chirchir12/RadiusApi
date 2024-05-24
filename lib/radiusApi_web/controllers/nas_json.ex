@@ -1,5 +1,6 @@
 defmodule RadiusApiWeb.NasJSON do
   alias RadiusApi.Devices.Nas
+  alias RadiusApi.Devices.NasReload
 
   @doc """
   Renders a list of nas.
@@ -13,6 +14,15 @@ defmodule RadiusApiWeb.NasJSON do
   """
   def show(%{nas: nas}) do
     %{data: data(nas)}
+  end
+
+  def reload(%{reload: %NasReload{} = reload}) do
+    %{
+      data: %{
+        nas_ip_address: EctoNetwork.INET.decode( reload.nas_ip_address),
+        reload_time: reload.reload_time
+      }
+    }
   end
 
   defp data(%Nas{} = nas) do
