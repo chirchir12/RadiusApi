@@ -2,7 +2,7 @@
 
 ## Description
 
-This server helps network admins to configure and centralize authentication and authorization for any network setup. It runs on top of Freeradius server which is a high performance and highly configurable multi-protocol policy server.
+This server helps network admins to configure and centralize authentication and authorization for any network setup. It runs on top of Freeradius server which is a high performance and highly configurable multi-protocol policy server. Users will be able to login using their mac addresses. Mac address must be added/attached to users before their can access the network
 RadiusApi exposes APIs to do the following
 
 1. add/edit/delete NAS
