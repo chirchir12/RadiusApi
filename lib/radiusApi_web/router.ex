@@ -9,6 +9,12 @@ defmodule RadiusApiWeb.Router do
     pipe_through :api
     resources "/nas", NasController, except: [:new, :edit]
     post "/nas/reload", NasController, :nas_reload
+
+    post "/users", UserController, :create_user
+    get "/users", UserController, :get_users
+    get "/users/:id", UserController, :get_user
+    put "/users/:id", UserController, :update_user
+    delete "/users/:id", UserController, :delete_user
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
