@@ -19,7 +19,7 @@ defmodule RadiusApiWeb.NasJSON do
   def reload(%{reload: %NasReload{} = reload}) do
     %{
       data: %{
-        nas_ip_address: EctoNetwork.INET.decode( reload.nas_ip_address),
+        nas_ip_address: EctoNetwork.INET.decode(reload.nas_ip_address),
         reload_time: reload.reload_time
       }
     }

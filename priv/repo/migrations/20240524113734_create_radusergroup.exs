@@ -9,7 +9,7 @@ defmodule RadiusApi.Repo.Migrations.CreateRadusergroup do
 
       timestamps(type: :utc_datetime)
     end
-    create index(:radusergroup, [:UserName], name: :radusergroup_UserName)
 
+    create index(:radusergroup, [:UserName], name: :radusergroup_UserName)
   end
 end

@@ -10,6 +10,6 @@ defmodule RadiusApi.Repo.Migrations.CreateRadgroupcheck do
       timestamps(type: :utc_datetime)
     end
 
-    create index(:radgroupcheck, [:GroupName,:Attribute], name: :radgroupcheck_GroupName)
+    create index(:radgroupcheck, [:GroupName, :Attribute], name: :radgroupcheck_GroupName)
   end
 end

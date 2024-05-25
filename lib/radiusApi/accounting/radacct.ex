@@ -37,7 +37,7 @@ defmodule RadiusApi.Accounting.Radacct do
   @required [
     :acct_session_id,
     :acct_unique_id,
-    :nas_ip_address,
+    :nas_ip_address
   ]
 
   @primary_key {:id, :id, autogenerate: true, source: :RadAcctId}
@@ -78,7 +78,6 @@ defmodule RadiusApi.Accounting.Radacct do
   def changeset(t, attr \\ %{}) do
     t
     |> cast(attr, @permitted)
-    |>validate_required(@required)
+    |> validate_required(@required)
   end
-
 end

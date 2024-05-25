@@ -51,8 +51,9 @@ defmodule RadiusApi.Devices do
 
   """
   def create_nas(attrs \\ %{}) do
-    nas = Nas.changeset( %Nas{}, attrs)
-    Repo.insert(nas)
+    %Nas{}
+    |> Nas.changeset(attrs)
+    |> Repo.insert()
   end
 
   @doc """

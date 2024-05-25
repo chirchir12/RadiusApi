@@ -10,7 +10,7 @@ defmodule RadiusApi.Repo.Migrations.CreateRadcheck do
 
       timestamps(type: :utc_datetime)
     end
-    create index(:radcheck, [:UserName,:Attribute], name: :radcheck_UserName)
 
+    create index(:radcheck, [:UserName, :Attribute], name: :radcheck_UserName)
   end
 end

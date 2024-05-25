@@ -38,7 +38,7 @@ defmodule RadiusApi.Repo.Migrations.CreateRadacct do
     end
 
     unique_index(:radacct, [:AcctUniqueId], name: :radacct_AcctUniqueId_unique)
-    create index(:radacct, [:AcctStartTime, :NASIPAddress ], name: :radacct_whoson)
+    create index(:radacct, [:AcctStartTime, :NASIPAddress], name: :radacct_whoson)
     create index(:radacct, [:NASIPAddress, :AcctStartTime], name: :radacct_bulk_close)
     create index(:radacct, [:AcctStartTime, :UserName], name: :radacct_start_user_idx)
     create index(:radacct, [:AcctStopTime, :AcctUpdateTime], name: :radacct_bulk_timeout)

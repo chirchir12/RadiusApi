@@ -21,6 +21,7 @@ config :radiusApi, RadiusApi.Repo,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
+
 # Configures the endpoint
 config :radiusApi, RadiusApiWeb.Endpoint,
   url: [host: "localhost"],

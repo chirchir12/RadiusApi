@@ -21,7 +21,16 @@ defmodule RadiusApi.DevicesTest do
     end
 
     test "create_nas/1 with valid data creates a nas" do
-      valid_attrs = %{ports: 48, type: "other", description: "some description", server: "207.40.4.33", nasname: "192.56.32.2", secret: "secret", community: "some community", shortname: "mikrotik"}
+      valid_attrs = %{
+        ports: 48,
+        type: "other",
+        description: "some description",
+        server: "207.40.4.33",
+        nasname: "192.56.32.2",
+        secret: "secret",
+        community: "some community",
+        shortname: "mikrotik"
+      }
 
       assert {:ok, %Nas{} = nas} = Devices.create_nas(valid_attrs)
       assert nas.ports == 48

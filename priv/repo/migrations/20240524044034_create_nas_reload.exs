@@ -7,6 +7,5 @@ defmodule RadiusApi.Repo.Migrations.CreateNasReload do
       add :ReloadTime, :utc_datetime
       timestamps(type: :utc_datetime)
     end
-
   end
 end

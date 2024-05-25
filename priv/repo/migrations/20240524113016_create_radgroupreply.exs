@@ -10,7 +10,6 @@ defmodule RadiusApi.Repo.Migrations.CreateRadgroupreply do
       timestamps(type: :utc_datetime)
     end
 
-    create index(:radgroupreply, [:GroupName,:Attribute], name: :radgroupreply_GroupName)
-
+    create index(:radgroupreply, [:GroupName, :Attribute], name: :radgroupreply_GroupName)
   end
 end

@@ -9,10 +9,12 @@ defmodule RadiusApiWeb.ErrorJSON do
   # you may add your own clauses, such as:
   #
   def render("404.json", _assigns) do
-    %{error: %{
-      status: "not_found",
-      reason: "requested resource wasn't found",
-      }}
+    %{
+      error: %{
+        status: "not_found",
+        reason: "requested resource wasn't found"
+      }
+    }
   end
 
   # By default, Phoenix returns the status message from

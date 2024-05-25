@@ -10,7 +10,7 @@ defmodule RadiusApi.Repo.Migrations.CreateRadreply do
 
       timestamps(type: :utc_datetime)
     end
-    create index(:radreply, [:UserName,:Attribute], name: :radreply_UserName)
 
+    create index(:radreply, [:UserName, :Attribute], name: :radreply_UserName)
   end
 end

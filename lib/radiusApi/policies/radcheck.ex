@@ -24,13 +24,9 @@ defmodule RadiusApi.Policies.Radcheck do
     timestamps(type: :utc_datetime)
   end
 
-  def changeset(t, attr\\ %{}) do
+  def changeset(t, attr \\ %{}) do
     t
     |> cast(attr, @permitted)
     |> validate_required(@required)
   end
-
-
-
-
 end
