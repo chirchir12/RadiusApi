@@ -40,6 +40,6 @@ defmodule RadiusApi.Devices.Nas do
     nas
     |> cast(attrs, @permitted)
     |> validate_required(@required)
-    |> unique_constraint(:nasname, message: "nasname is already configured")
+    |> unique_constraint([:nasname], name: :nas_nasname)
   end
 end
