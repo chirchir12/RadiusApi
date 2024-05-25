@@ -25,15 +25,14 @@ defmodule RadiusApiWeb.NasController do
   end
 
   def update(conn, %{"id" => id, "nas" => nas_params}) do
-    with nas <- Devices.get_nas!(id),
-         {:ok, %Nas{} = nas} <- Devices.update_nas(nas, nas_params) do
+    nas = Devices.get_nas!(id)
+    with {:ok, %Nas{} = nas} <- Devices.update_nas(nas, nas_params) do
       render(conn, :show, nas: nas)
     end
   end
 
   def delete(conn, %{"id" => id}) do
     nas = Devices.get_nas!(id)
-
     with {:ok, %Nas{}} <- Devices.delete_nas(nas) do
       send_resp(conn, :no_content, "")
     end

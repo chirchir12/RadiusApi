@@ -104,8 +104,7 @@ defmodule RadiusApi.Devices do
   end
 
   def reload_nas(attr \\ %{}) do
-    date = DateTime.utc_now()
-    attr = Map.put(attr, "reload_time", date)
+    attr = Map.put(attr, "reload_time", DateTime.utc_now())
     changeset = NasReload.changeset(%NasReload{}, attr)
     Repo.insert(changeset)
   end
