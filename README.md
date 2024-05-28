@@ -9,7 +9,7 @@ RadiusApi exposes APIs to do the following
 2. add/edit/delete users
 3. add/edit/delete user devices
 4. add users to a network |> will add all his/her devices
-5. add remove user from network |> will remove all his/her devices
+5. remove user from network |> will remove all his/her devices
 6. add device to a network
 7. remove device from a network
 
