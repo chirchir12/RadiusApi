@@ -17,6 +17,15 @@ defmodule RadiusApiWeb.ErrorJSON do
     }
   end
 
+  def render("422.json", %{error: error}) do
+    %{
+      error: %{
+        status: error.message,
+        reason: "requested resource wasn't found"
+      }
+    }
+  end
+
   # By default, Phoenix returns the status message from
   # the template name. For example, "404.json" becomes
   # "Not Found".

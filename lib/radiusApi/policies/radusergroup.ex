@@ -26,5 +26,6 @@ defmodule RadiusApi.Policies.Radusergroup do
     t
     |> cast(attr, @permitted)
     |> validate_required(@required)
+    |> unique_constraint([:username, :groupname, :priority])
   end
 end

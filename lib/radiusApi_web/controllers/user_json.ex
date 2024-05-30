@@ -9,8 +9,14 @@ defmodule RadiusApiWeb.UserJSON do
     %{data: for(device <- devices, do: data(device))}
   end
 
-  def show(%{user: %User{user_devices: user_devices} = user}) do
-    %{data: data(user, user_devices)}
+
+
+  def show(%{user: %User{user_devices: devices } = user}) when is_list(devices) do
+    %{data: data(user, devices)}
+  end
+
+  def show(%{user: %User{} = user}) do
+    %{data: data(user)}
   end
 
   def show(%{device: %UserDevice{} = device}) do

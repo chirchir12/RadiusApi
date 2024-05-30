@@ -12,6 +12,13 @@ defmodule RadiusApi.Users do
     Repo.get!(User, id) |> Repo.preload(:user_devices)
   end
 
+  def get_by_email(email) do
+    case Repo.get_by(User, email: email) do
+      nil -> {:error, "user_not_found"}
+      user -> {:ok, user}
+    end
+  end
+
   def list_users() do
     Repo.all(User)
   end

@@ -28,5 +28,6 @@ defmodule RadiusApi.Policies.Radcheck do
     t
     |> cast(attr, @permitted)
     |> validate_required(@required)
+    |> unique_constraint(:username)
   end
 end
