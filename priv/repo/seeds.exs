@@ -2,10 +2,29 @@
 #
 #     mix run priv/repo/seeds.exs
 #
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     RadiusApi.Repo.insert!(%RadiusApi.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias RadiusApi.Policies
+
+policies = [
+  # this is maximum speed
+  {"admin", "Mikrotik-Rate-Limit", ":=", "100M/100M"},
+  # 1 week
+  {"admin", "Session-Timeout", ":=", "604800"},
+  {"guest", "Mikrotik-Rate-Limit", ":=", "10M/10M"},
+  {"guest", "Session-Timeout", ":=", "3600"}
+]
+
+Enum.each(policies, fn {group_name, attribute, op, value} ->
+  Policies.create_group_check!(%{
+    group_name: group_name,
+    attribute: attribute,
+    op: op,
+    value: value
+  })
+
+  Policies.create_group_reply!(%{
+    group_name: group_name,
+    attribute: attribute,
+    op: op,
+    value: value
+  })
+end)
