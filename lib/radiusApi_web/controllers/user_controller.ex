@@ -16,6 +16,7 @@ defmodule RadiusApiWeb.UserController do
 
   def get_user(conn, %{"id" => id}) do
     user = Users.get_user!(id)
+
     conn
     |> put_status(:ok)
     |> render(:show, user: user)

@@ -24,6 +24,7 @@ defmodule RadiusApiWeb.Router do
     get "/devices", UserController, :get_devices
 
     post "/network/add/user", NetworkController, :add_to_network
+    post "/network/remove/user", NetworkController, :remove_from_network
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
