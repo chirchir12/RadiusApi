@@ -59,6 +59,7 @@ defmodule RadiusApiWeb.UserController do
     end
   end
 
+  @spec get_device(Plug.Conn.t(), map()) :: Plug.Conn.t()
   def get_device(conn, %{"id" => id}) do
     device = Users.get_device!(id)
 
