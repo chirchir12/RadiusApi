@@ -52,7 +52,7 @@ defmodule RadiusApi.DevicesTest do
       update_attrs = %{server: "208.47.204.89", secret: "secret2"}
 
       assert {:ok, %Nas{} = nas} = Devices.update_nas(nas, update_attrs)
-      assert nas.ports == 43
+      assert nas.ports == 34
       assert nas.type == "other"
       assert nas.description == "some description"
       assert nas.server == "208.47.204.89"

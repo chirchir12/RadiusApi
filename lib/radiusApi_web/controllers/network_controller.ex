@@ -32,8 +32,8 @@ defmodule RadiusApiWeb.NetworkController do
     end
   end
 
-  def remove_from_network(conn, %{ "criteria" => %{"email" => email} }) do
-    with {:ok, _result} <- Network.remove_user_from_network(email)  do
+  def remove_from_network(conn, %{"criteria" => %{"email" => email}}) do
+    with {:ok, _result} <- Network.remove_user_from_network(email) do
       send_resp(conn, :no_content, "")
     end
   end

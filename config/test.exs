@@ -6,11 +6,11 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :radiusApi, RadiusApi.Repo,
-  username: System.get_env("DB_USER"),
-  password: System.get_env("DB_PASS"),
-  hostname: System.get_env("DB_HOST"),
-  database: System.get_env("DB_NAME"),
-  port: System.get_env("DB_PORT"),
+  username: System.get_env("DB_USER_TEST"),
+  password: System.get_env("DB_PASS_TEST"),
+  hostname: System.get_env("DB_HOST_TEST"),
+  database: System.get_env("DB_NAME_TEST"),
+  port: System.get_env("DB_PORT_TEST"),
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
