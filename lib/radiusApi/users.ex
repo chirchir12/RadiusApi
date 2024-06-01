@@ -1,4 +1,5 @@
 defmodule RadiusApi.Users do
+  import Ecto.Query
   alias RadiusApi.Repo
   alias RadiusApi.Users.{User, UserDevice}
 
@@ -6,6 +7,14 @@ defmodule RadiusApi.Users do
     %User{}
     |> User.changeset(attr)
     |> Repo.insert()
+    |> case do
+      {:ok, user} ->
+        user = Repo.preload(user, :user_devices)
+        {:ok, user}
+
+      error ->
+        error
+    end
   end
 
   def get_user!(id) do
@@ -15,12 +24,16 @@ defmodule RadiusApi.Users do
   def get_by_email(email) do
     case Repo.get_by(User, email: email) do
       nil -> {:error, "user_not_found"}
-      user -> {:ok, user}
+      user -> {:ok, Repo.preload(user, :user_devices)}
     end
   end
 
   def list_users() do
-    Repo.all(User)
+    # password is cleartext because of PAP protocol
+    query = from(u in User, select: {u.id, u.email, u.firstname, u.password, u.lastname})
+
+    Repo.all(query)
+    |> Enum.map(&from_tuple/1)
   end
 
   def update(%User{} = user, attr) do
@@ -50,10 +63,32 @@ defmodule RadiusApi.Users do
   end
 
   def get_devices() do
-    Repo.all(UserDevice)
+    query = from(d in UserDevice, select: {d.id, d.type, d.mac, d.user_id})
+
+    Repo.all(query)
+    |> Enum.map(&from_tuple/1)
   end
 
   def delete_device(%UserDevice{} = device) do
     Repo.delete(device)
+  end
+
+  defp from_tuple({id, email, firstname, password, lastname}) do
+    %User{
+      id: id,
+      email: email,
+      firstname: firstname,
+      lastname: lastname,
+      password: password
+    }
+  end
+
+  defp from_tuple({id, type, mac, user_id}) do
+    %UserDevice{
+      id: id,
+      user_id: user_id,
+      mac: mac,
+      type: type
+    }
   end
 end

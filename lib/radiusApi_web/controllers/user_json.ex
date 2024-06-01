@@ -21,24 +21,6 @@ defmodule RadiusApiWeb.UserJSON do
     %{data: data(device)}
   end
 
-  defp data(%User{} = user) do
-    %{
-      id: user.id,
-      email: user.email,
-      firstname: user.firstname,
-      lastname: user.lastname,
-      password: user.password
-    }
-  end
-
-  defp data(%UserDevice{} = device) do
-    %{
-      id: device.id,
-      type: device.type,
-      mac: EctoNetwork.MACADDR.decode(device.mac)
-    }
-  end
-
   defp data(%User{} = user, devices) when is_list(devices) do
     %{
       id: user.id,
@@ -50,18 +32,21 @@ defmodule RadiusApiWeb.UserJSON do
     }
   end
 
-  defp data(%User{} = user, %UserDevice{} = device) do
+  defp data(%UserDevice{} = device) do
+    %{
+      id: device.id,
+      type: device.type,
+      mac: EctoNetwork.MACADDR.decode(device.mac)
+    }
+  end
+
+  defp data(%User{} = user) do
     %{
       id: user.id,
       email: user.email,
       firstname: user.firstname,
       lastname: user.lastname,
-      password: user.password,
-      devices: data(device)
+      password: user.password
     }
-  end
-
-  def prep_data(items) when is_list(items) do
-    for(item <- items, do: data(item))
   end
 end
