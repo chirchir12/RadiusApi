@@ -32,6 +32,10 @@ defmodule RadiusApi.UsersTest do
       assert Users.get_by_email(user.email) == {:ok, user}
     end
 
+    test "get_by_email/1 should return error for user who does not exist by email" do
+      assert Users.get_by_email("t@gmail.com") == {:error, "user_not_found"}
+    end
+
     test "create_user/1 create user when passed correct attributes" do
       valid_attrs = %{
         email: "test@gmail.com",
