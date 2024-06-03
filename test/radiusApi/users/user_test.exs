@@ -35,6 +35,6 @@ defmodule RadiusApi.Users.UserTest do
 
     changeset = User.changeset(%User{}, attrs)
     assert %Ecto.Changeset{} = changeset
-    assert changeset.valid? == false
+    refute changeset.valid?
   end
 end
