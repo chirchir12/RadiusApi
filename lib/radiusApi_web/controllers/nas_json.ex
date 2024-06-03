@@ -18,10 +18,7 @@ defmodule RadiusApiWeb.NasJSON do
 
   def reload(%{reload: %NasReload{} = reload}) do
     %{
-      data: %{
-        nas_ip_address: EctoNetwork.INET.decode(reload.nas_ip_address),
-        reload_time: reload.reload_time
-      }
+      data: data(reload)
     }
   end
 
@@ -35,6 +32,20 @@ defmodule RadiusApiWeb.NasJSON do
       server: nas.server,
       community: nas.community,
       description: nas.description
+    }
+  end
+
+  defp data(%NasReload{nas_ip_address: ip_address} = reload) when is_binary(ip_address) do
+    %{
+      nas_ip_address: reload.nas_ip_address,
+      reload_time: reload.reload_time
+    }
+  end
+
+  defp data(%NasReload{} = reload) do
+    %{
+      nas_ip_address: EctoNetwork.INET.decode(reload.nas_ip_address),
+      reload_time: reload.reload_time
     }
   end
 end
