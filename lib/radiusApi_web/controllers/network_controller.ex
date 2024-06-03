@@ -9,7 +9,7 @@ defmodule RadiusApiWeb.NetworkController do
     case Network.add_user_to_network(data) do
       {:ok, _results} ->
         conn
-        |> put_status(:created)
+        |> put_status(:ok)
         |> render(:add, data: %{status: "ok"})
 
       {:error, "group_name_not_found" = message} ->
@@ -27,6 +27,7 @@ defmodule RadiusApiWeb.NetworkController do
       {:error, "insert_radcheck", %Ecto.Changeset{} = changeset, _} ->
         {:error, "insert_radcheck", changeset}
 
+      # this will never be reached
       {:error, "insert_usergroup", %Ecto.Changeset{} = changeset, _} ->
         {:error, "insert_usergroup", changeset}
     end

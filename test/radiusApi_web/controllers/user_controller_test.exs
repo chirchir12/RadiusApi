@@ -1,6 +1,5 @@
 defmodule RadiusApiWeb.UserControllerTest do
   alias RadiusApi.Users.UserDevice
-  alias Hex.API.User
   use RadiusApiWeb.ConnCase
   import RadiusApi.UsersFixtures
   alias RadiusApi.Users.User
