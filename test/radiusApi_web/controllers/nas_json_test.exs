@@ -28,7 +28,6 @@ defmodule RadiusApiWeb.NasJSONTest do
   @reload %RadiusApi.Devices.NasReload{
     reload_time: @time,
     nas_ip_address: "1.1.1.1"
-
   }
 
   @reload_data %{
@@ -45,7 +44,6 @@ defmodule RadiusApiWeb.NasJSONTest do
   end
 
   test "reload/1" do
-    assert %{data: @reload_data } == RadiusApiWeb.NasJSON.reload(%{reload: @reload})
-
+    assert %{data: @reload_data} == RadiusApiWeb.NasJSON.reload(%{reload: @reload})
   end
 end
