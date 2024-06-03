@@ -37,6 +37,7 @@ defmodule RadiusApi.NetworkControllerTest do
 
   describe "remove_from_network" do
     setup [:seed_policies, :create_user, :add_to_network]
+
     test "to remove user from network", %{conn: conn, user: user} do
       attrs = %{"email" => user.email}
       conn = post(conn, ~p"/api/network/remove/user", criteria: attrs)
@@ -53,7 +54,6 @@ defmodule RadiusApi.NetworkControllerTest do
     attrs = %{"email" => user.email, "type" => "admin"}
     _ = RadiusApi.Network.add_user_to_network(attrs)
     :ok
-
   end
 
   defp seed_policies(_) do
